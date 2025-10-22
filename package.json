@@ -1,7 +1,7 @@
 {
   "name": "chromeproxifier",
   "version": "1.0.0",
-  "description": "HTTP proxy server that proxify requests though Google DevTools Protocol and `fetch` function calls.",
+  "description": "HTTP proxy server that proxify requests though Google DevTools Protocol and `fetch` function calls",
   "license": "ISC",
   "author": "4evsec",
   "type": "module",

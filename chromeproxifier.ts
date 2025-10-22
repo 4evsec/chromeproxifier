@@ -1,3 +1,6 @@
+/**
+ * HTTP proxy server that proxify requests though Google DevTools Protocol and fetch function calls.
+ */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
@@ -29,6 +32,7 @@ const argv = yargs(hideBin(process.argv))
     default: '127.0.0.1',
   });
 
+// A list of headers pattern to omit in `fetch` calls.
 // https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_request_header
 const FORBIDDEN_HEADERS = [
   'accept-charset',
