@@ -1,5 +1,6 @@
 /**
- * HTTP proxy server that proxify requests though Google DevTools Protocol and fetch function calls.
+ * HTTP proxy server that proxify requests though Google DevTools Protocol and `fetch` function
+ * calls.
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -98,6 +99,8 @@ class FetchService {
 
   static {
     this.payload = readFileSync(resolve(import.meta.dirname, 'payload.js'), 'utf-8');
+    // The payload template
+
     this.headersIgnoreReg = new RegExp(FORBIDDEN_HEADERS.join('|'));
   }
 
