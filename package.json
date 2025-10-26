@@ -5,6 +5,9 @@
   "license": "Apache-2.0",
   "author": "4evsec",
   "type": "module",
+  "bin": {
+    "chromeproxifier": "./bin/chromeproxifier"
+  },
   "scripts": {},
   "dependencies": {
     "chalk": "^5.6.2",
