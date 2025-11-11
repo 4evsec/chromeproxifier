@@ -6,7 +6,7 @@
  *
  * Usage:
  *      chromeproxifier -p 9090 --remote-debugging-host 127.0.0.1 --remote-debugging-port 9222
- * 
+ *
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -131,10 +131,10 @@ class FetchService {
 
   async loadBrowserTargets(): Promise<void> {
     const { targetInfos } = await this.client.Target.getTargets();
-    this.targets = new Map(
+    this.targets = new Map<string, TargetInfos>(
       targetInfos
         .filter(({ url }) => isHttpUrl(url))
-        .map(({ url, targetId }) => [parseUrl(url).host, { targetId }] as [string, TargetInfos]),
+        .map(({ url, targetId }) => [parseUrl(url).host, { targetId }]),
     );
   }
 
