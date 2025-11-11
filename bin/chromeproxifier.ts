@@ -1,10 +1,12 @@
 #!/usr/bin/env tsx
-/**
+/***************************************************************************************************
  * HTTP proxy server that proxify requests though Google DevTools Protocol via `fetch` function
  * calls.
+ ***************************************************************************************************
  *
  * Usage:
- *      chromeproxifier.ts -p 9090 --remote-debugging-host 127.0.0.1 --remote-debugging-port 9222
+ *      chromeproxifier -p 9090 --remote-debugging-host 127.0.0.1 --remote-debugging-port 9222
+ * 
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';

@@ -6,7 +6,7 @@
   "author": "4evsec",
   "type": "module",
   "bin": {
-    "chromeproxifier": "./bin/chromeproxifier"
+    "chromeproxifier": "./bin/chromeproxifier.ts"
   },
   "scripts": {},
   "dependencies": {
