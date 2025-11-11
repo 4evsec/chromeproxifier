@@ -1,11 +1,14 @@
 #!/usr/bin/env tsx
-/***************************************************************************************************
- * HTTP proxy server that proxify requests though Google DevTools Protocol via `fetch` function
- * calls.
- ***************************************************************************************************
+/*******************************************************************************
+ * ChromeProxifier
+ *
+ * HTTP proxy server that proxify requests though Google DevTools Protocol via
+ * `fetch` function calls.
+ *******************************************************************************
  *
  * Usage:
- *      chromeproxifier -p 9090 --remote-debugging-host 127.0.0.1 --remote-debugging-port 9222
+ *      chromeproxifier -p 9090 --remote-debugging-host 127.0.0.1 \
+ *        --remote-debugging-port 9222
  *
  */
 import { readFileSync } from 'node:fs';
@@ -44,7 +47,10 @@ interface TargetInfos {
   sessionId?: string;
 }
 
-type FetchConfig = Omit<RequestInit, 'headers'> & { headers: Record<string, string>; url: URL };
+type FetchConfig = Omit<RequestInit, 'headers'> & {
+  headers: Record<string, string>;
+  url: URL;
+};
 
 interface FetchResponse {
   status: number;
@@ -81,9 +87,10 @@ const FORBIDDEN_HEADERS = [
 ];
 
 /**
- * A wrapper around `URL.parse` that doesn't return null values, and throws an error instead.
+ * A wrapper around `URL.parse` that doesn't return null values, and throws an
+ * error instead.
  * @param url an URL to parse,
- * @returns the corresponding parsed `URL` object.
+ * @returns the corresponding `URL` object.
  */
 function parseUrl(url: string): URL {
   const parsed = URL.parse(url);
@@ -149,7 +156,10 @@ class FetchService {
       await new Promise(r => setTimeout(r, 1000));
     }
     if (!sessionId) {
-      ({ sessionId } = await this.client.Target.attachToTarget({ targetId, flatten: true }));
+      ({ sessionId } = await this.client.Target.attachToTarget({
+        targetId,
+        flatten: true,
+      }));
       // Cache the target's information.
       this.targets.set(url.host, { targetId, sessionId });
     }
@@ -160,11 +170,17 @@ class FetchService {
     const { sessionId } = await this.getTarget(config.url);
     const { result } = await this.client.send(
       'Runtime.evaluate',
-      { expression: FetchService.getFetchPayload(config), awaitPromise: true, returnByValue: true },
+      {
+        expression: FetchService.getFetchPayload(config),
+        awaitPromise: true,
+        returnByValue: true,
+      },
       sessionId,
     );
     if (result.subtype === 'error') {
-      throw new Error(`An error has occured during payload execution: ${result.description}`);
+      throw new Error(
+        `An error has occured during payload execution: ${result.description}`,
+      );
     }
     return result.value;
   }
