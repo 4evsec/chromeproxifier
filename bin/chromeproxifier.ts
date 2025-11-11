@@ -4,7 +4,7 @@
  * calls.
  *
  * Usage:
- *      chromproxifier -p 9090 --remote-debugging-host 127.0.0.1 --remote-debugging-port 9222
+ *      chromeproxifier.ts -p 9090 --remote-debugging-host 127.0.0.1 --remote-debugging-port 9222
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -117,7 +117,7 @@ class FetchService {
     return pickBy(headers, (_, key) => !this.headersIgnoreReg.test(key));
   }
 
-  static getJSPayload({ url, ...options }: FetchConfig): string {
+  static getFetchPayload({ url, ...options }: FetchConfig): string {
     options.credentials = 'include';
     if (options.headers) {
       options.headers = this.filterForbiddenHeaders(options.headers);
@@ -158,7 +158,7 @@ class FetchService {
     const { sessionId } = await this.getTarget(config.url);
     const { result } = await this.client.send(
       'Runtime.evaluate',
-      { expression: FetchService.getJSPayload(config), awaitPromise: true, returnByValue: true },
+      { expression: FetchService.getFetchPayload(config), awaitPromise: true, returnByValue: true },
       sessionId,
     );
     if (result.subtype === 'error') {
