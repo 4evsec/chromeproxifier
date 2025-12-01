@@ -1,27 +1,27 @@
 {
-  "name": "chromeproxifier",
-  "version": "1.0.0",
-  "description": "HTTP proxy server that proxify requests though Google DevTools Protocol via `fetch` function calls",
-  "license": "Apache-2.0",
-  "author": "4evsec",
-  "type": "module",
-  "bin": {
-    "chromeproxifier": "./bin/chromeproxifier.ts"
-  },
-  "scripts": {},
-  "dependencies": {
-    "chalk": "^5.6.2",
-    "chrome-remote-interface": "^0.33.3",
-    "mockttp": "^4.2.0",
-    "remeda": "^2.32.0",
-    "yargs": "^18.0.0"
-  },
-  "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@types/chrome-remote-interface": "^0.31.14",
-    "@types/node": "^24.8.1",
-    "@types/yargs": "^17.0.33",
-    "prettier": "^3.6.2",
-    "tsx": "^4.20.6"
-  }
+    "name": "chromeproxifier",
+    "version": "1.0.0",
+    "description": "HTTP proxy server that proxify requests though Google DevTools Protocol via `fetch` function calls",
+    "license": "Apache-2.0",
+    "author": "4evsec",
+    "type": "module",
+    "bin": {
+        "chromeproxifier": "./bin/chromeproxifier.ts"
+    },
+    "scripts": {},
+    "dependencies": {
+        "chalk": "^5.6.2",
+        "chrome-remote-interface": "^0.33.3",
+        "mockttp": "^4.2.0",
+        "remeda": "^2.32.0",
+        "yargs": "^18.0.0"
+    },
+    "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+        "@types/chrome-remote-interface": "^0.31.14",
+        "@types/node": "^24.8.1",
+        "@types/yargs": "^17.0.33",
+        "prettier": "^3.6.2",
+        "tsx": "^4.20.6"
+    }
 }
