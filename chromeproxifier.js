@@ -24,19 +24,19 @@ import { hideBin } from 'yargs/helpers';
 
 const argv = yargs(hideBin(process.argv))
   .option('proxy-port', {
-    alias: ['p', 'remote-debugging-port'],
+    alias: 'p',
     describe: `The proxy server's port`,
     type: 'number',
     default: 9090,
   })
   .option('chrome-port', {
-    alias: ['dp', 'remote-debugging-host'],
+    alias: ['dp', 'remote-debugging-port'],
     describe: 'The chrome remote debugging port',
     type: 'number',
     default: 9222,
   })
   .option('chrome-host', {
-    alias: 'h',
+    alias: ['h', 'remote-debugging-host'],
     describe: 'The chrome remote debugging host',
     type: 'string',
     default: '127.0.0.1',
